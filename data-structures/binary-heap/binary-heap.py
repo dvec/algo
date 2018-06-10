@@ -23,8 +23,8 @@ def build_heap(a):
 
 
 def increase_item_in_heap(h, i, v):
-    h[i] += v
-    while i > 1 and h[i // 2] < h[i]:
+    h[i-1] += v
+    while i-1 > 1 and h[(i-1) // 2] < h[i-1]:
         h[i-1], h[(i-1) // 2] = h[(i-1) // 2], h[i-1]
         i //= 2
 
@@ -43,8 +43,8 @@ if __name__ == '__main__':
     print('Изначальный массив:', A)
     H = build_heap(A)
     print('Двоичная куча:', H)
-    print('Увеличиваю наименьшее значение в куче на 10...')
-    increase_item_in_heap(H, len(H) - 1, 10)
+    print('Увеличиваю наибольшее значение в куче на 10...')
+    increase_item_in_heap(H, 1, 10)
     print('Новая двоичная куча:', H)
     print('Удаляю корень...')
     del_root_item_in_heap(H)
